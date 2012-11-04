@@ -16,3 +16,7 @@ INSTALLED_APPS = (
 
     'quotes',
 )
+
+TEMPLATE_DIRS = (
+    'quotes/templates',
+)
