@@ -1,6 +1,5 @@
 from django.forms import ModelForm
-from django.forms import CharField
-from django.forms import Textarea
+from django.forms.widgets import TextInput
 
 from crispy_forms.bootstrap import FormActions
 from crispy_forms.helper import FormHelper
@@ -19,6 +18,11 @@ class QuoteForm(ModelForm):
         exclude = (
             'user',
         )
+
+        widgets = {
+            'author': TextInput,
+            'source': TextInput,
+        }
 
     def __init__(self, request, *args, **kwargs):
         self.request = request
