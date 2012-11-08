@@ -8,7 +8,7 @@ from quotes.models import Quote
 from quotes.forms import QuoteForm
 
 def landing(request):
-    return HttpResponse('Hi')
+    return redirect(reverse('list_quotes'))
 
 def _create_or_edit_quote(request, quote=None):
     form = QuoteForm(request, request.POST or None, instance=quote)
