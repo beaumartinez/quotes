@@ -76,6 +76,13 @@ class QuoteForm(ModelForm):
 
         return quote
 
+    def clean_content(self):
+        content = self.data['content']
+        content = content.strip()
+        content = sub('\s+', ' ', content)
+
+        return content
+
     def clean_author(self):
         author = self.data['author']
         author = author.strip()
