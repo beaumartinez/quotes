@@ -3,9 +3,13 @@
 {% block content %}
     <h1>Your quotes</h1>
 
-    <ul id=quotes>
-        {% for quote in quotes %}
-            <li><span class=quote-content>{{ quote.content }}</span> —<span class=quote-author>{% firstof quote.author.name 'Anonymous' %}</span>{% if quote.source %}, <span class=quote-source>{{ quote.source.name }}</span>{% endif %} <span><a href="{% url edit_quote quote.pk %}">Edit</a>
-        {% endfor %}
-    </ul>
+    {% if quotes %}
+        <ul id=quotes>
+            {% for quote in quotes %}
+                <li><span class=quote-content>{{ quote.content }}</span> —<span class=quote-author>{% firstof quote.author.name 'Anonymous' %}</span>{% if quote.source %}, <span class=quote-source>{{ quote.source.name }}</span>{% endif %} <span><a href="{% url edit_quote quote.pk %}">Edit</a>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no quotes. <a href="{% url create_quote %}">Create a quote</a>
+    {% endif %}
 {% endblock %}
