@@ -29,3 +29,10 @@ def edit_quote(request, quote_id):
     quote = get_object_or_404(Quote, pk=quote_id, user=request.user)
 
     return _create_or_edit_quote(request, quote=quote)
+
+def list_quotes(request):
+    quotes = Quote.objects.filter(user=request.user)
+
+    return render(request, 'list_quotes.html', {
+        'quotes': quotes, 
+    })
