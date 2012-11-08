@@ -7,6 +7,8 @@ from crispy_forms.bootstrap import FormActions
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout
 from crispy_forms.layout import Submit
+from floppyforms.widgets import TextInput
+from floppyforms.widgets import Textarea
 
 from quotes.models import Author
 from quotes.models import Quote
@@ -14,8 +16,8 @@ from quotes.models import Source
 
 class QuoteForm(ModelForm):
 
-    author = CharField(required=False)
-    source = CharField(required=False)
+    author = CharField(required=False, widget=TextInput(attrs={'placeholder': 'The quote\'s author. Optional'}))
+    source = CharField(required=False, widget=TextInput(attrs={'placeholder': 'The quote\'s source. Optional'}))
 
     class Meta(object):
         model = Quote
@@ -23,6 +25,10 @@ class QuoteForm(ModelForm):
         exclude = (
             'user',
         )
+
+        widgets = {
+            'content': Textarea(attrs={'placeholder': 'The quote. Required'}),
+        }
 
     def __init__(self, request, *args, **kwargs):
         self.request = request
