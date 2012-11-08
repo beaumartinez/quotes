@@ -16,6 +16,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
 
     'crispy_forms',
+    'floppyforms',
 
     'quotes',
 )
