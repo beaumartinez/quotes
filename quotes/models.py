@@ -8,11 +8,11 @@ class Quote(Model):
     user = ForeignKey(User)
 
     content = TextField()
-    author = ForeignKey('Author', null=True)
-    source = ForeignKey('Source', null=True)
+    author = ForeignKey('Author', blank=True, null=True)
+    source = ForeignKey('Source', blank=True, null=True)
 
 class Author(Model):
-    name = CharField(max_length=100)
+    name = CharField(max_length=100, unique=True)
 
 class Source(Model):
-    name = CharField(max_length=100)
+    name = CharField(max_length=100, unique=True)
