@@ -1,8 +1,10 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
+from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render
 
+from quotes.models import Quote
 from quotes.forms import QuoteForm
 
 def landing(request):
@@ -22,3 +24,8 @@ def _create_or_edit_quote(request, quote=None):
 
 def create_quote(request):
     return _create_or_edit_quote(request)
+
+def edit_quote(request, quote_id):
+    quote = get_object_or_404(Quote, pk=quote_id, user=request.user)
+
+    return _create_or_edit_quote(request, quote=quote)
