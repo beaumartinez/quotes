@@ -10,6 +10,10 @@
             {% endfor %}
         </ul>
     {% else %}
-        <p>You have no quotes. <a href="{% url create_quote %}">Create a quote</a>
+        <p>You have no quotes. <a href="{% url create_quote %}">Add a quote</a>
+    {% endif %}
+
+    {% if quotes %}
+        <p><a href="{% url create_quote %}">Add a quote</a>
     {% endif %}
 {% endblock %}

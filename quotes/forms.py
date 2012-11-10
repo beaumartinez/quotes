@@ -114,6 +114,6 @@ class QuoteForm(ModelForm):
         'source',
 
         FormActions(
-            Submit('create', 'Create quote', css_class='btn-primary'),
+            Submit('add', 'Add quote', css_class='btn-primary'),
         )
     )
