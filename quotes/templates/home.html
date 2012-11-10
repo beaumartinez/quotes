@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Hi {{ request.user.email }}</h1>
+
+    {% if quotes %}
+        <p>You have added {{ quotes.count }} quote{{ quotes|pluralize }}. <a href="{% url list_quotes %}">See your quotes</a>
+    {% else %}
+        <p>You haven't added any quotes yet. <a href="{% url create_quote %}">Add a quote</a>
+    {% endif %}
+{% endblock %}

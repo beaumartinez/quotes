@@ -14,6 +14,7 @@
             <nav class=nav-collapse>
                 {% if user.is_authenticated %}
                     <ul class=nav>
+                        <li class="{% active 'home' %}"><a href="{% url home %}">Home</a>
                         <li class="{% active 'list_quotes' %}"><a href="{% url list_quotes %}">Your quotes</a>
                         <li class="{% active 'create_quote' %}"><a href="{% url create_quote %}">Add a quote</a>
                     </ul>

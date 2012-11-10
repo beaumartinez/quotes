@@ -11,9 +11,17 @@ from quotes.forms import QuoteForm
 
 def landing(request):
     if request.user.is_authenticated():
-        return redirect(reverse('list_quotes'))
+        return redirect(reverse('home'))
 
     return redirect(reverse('about'))
+
+@login_required
+def home(request):
+    quotes = Quote.objects.filter(user=request.user.pk)
+
+    return render(request, 'home.html', {
+        'quotes': quotes,   
+    })
 
 def about(request):
     return render(request, 'about.html')
