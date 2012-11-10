@@ -40,6 +40,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django_browserid.context_processors.browserid_form',
 )
 
+STATIC_ROOT = 'static'
+
 STATIC_URL = '/static/'
 
 STATICFILES_FINDERS = (
