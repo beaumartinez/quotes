@@ -35,13 +35,13 @@ def create_quote(request):
 
 @login_required
 def edit_quote(request, quote_id):
-    quote = get_object_or_404(Quote, pk=quote_id, user=request.user)
+    quote = get_object_or_404(Quote, pk=quote_id, user=request.user.pk)
 
     return _create_or_edit_quote(request, quote=quote)
 
 @login_required
 def list_quotes(request):
-    quotes = Quote.objects.filter(user=request.user)
+    quotes = Quote.objects.filter(user=request.user.pk)
 
     return render(request, 'list_quotes.html', {
         'quotes': quotes, 
