@@ -25,8 +25,8 @@ INSTALLED_APPS = (
     'quotes',
 )
 
-TEMPLATE_DIRS = (
-    'quotes/templates',
+TEMPLATE_LOADERS = (
+    'django.template.loaders.app_directories.Loader',
 )
 
 AUTHENTICATION_BACKENDS = (
