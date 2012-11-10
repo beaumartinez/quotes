@@ -1,3 +1,5 @@
+from django.core.urlresolvers import reverse_lazy
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -36,6 +38,9 @@ STATIC_URL = '/static/'
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
+
+LOGIN_REDIRECT_URL = reverse_lazy('landing')
+LOGIN_URL = reverse_lazy('log_in')
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
