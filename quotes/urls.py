@@ -9,6 +9,7 @@ urlpatterns = patterns('quotes.views',
     url('^about/$', 'about', name='about'),
 
     url('^log-in/$', 'log_in', name='log_in'),
+    url('^log-out/$', 'log_out', name='log_out'),
 )
 
 urlpatterns += patterns('',
