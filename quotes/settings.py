@@ -54,10 +54,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-# django_browserid settings
-
-SITE_URL = 'http://quoteb.in/'
-
 # Keys
 
 try:
