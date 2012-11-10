@@ -10,6 +10,9 @@ from quotes.forms import QuoteForm
 def landing(request):
     return redirect(reverse('list_quotes'))
 
+def about(request):
+    return render(request, 'about.html')
+
 def _create_or_edit_quote(request, quote=None):
     form = QuoteForm(request, request.POST or None, instance=quote)
 

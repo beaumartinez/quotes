@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Quoteb.in</h1>
+
+    <p class=lead>Your favourite quotes, all in one place
+
+    {% if not user.is_authenticated %}
+        <p>To get started, <a href="{% url log_in %}">Log in</a>
+    {% endif %}
+{% endblock %}
