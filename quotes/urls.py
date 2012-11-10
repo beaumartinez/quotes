@@ -10,3 +10,7 @@ urlpatterns = patterns('quotes.views',
 
     url('^log-in/$', 'log_in', name='log_in'),
 )
+
+urlpatterns += patterns('',
+    url(r'^browserid/', include('django_browserid.urls')),
+)
