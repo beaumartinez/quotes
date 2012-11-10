@@ -57,3 +57,10 @@ MIDDLEWARE_CLASSES = (
 # django_browserid settings
 
 SITE_URL = 'http://quoteb.in/'
+
+# Development settings
+
+try:
+    from settings_development import *
+except ImportError:
+    pass
