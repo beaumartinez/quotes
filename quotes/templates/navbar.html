@@ -1,0 +1,39 @@
+{% load tags %}
+
+<div class="navbar navbar-static-top">
+    <div class=navbar-inner>
+        <div class=container>
+            <a class="btn btn-navbar" data-toggle=collapse data-target=.nav-collapse>
+                <span class=icon-bar></span>
+                <span class=icon-bar></span>
+                <span class=icon-bar></span>
+            </a>
+
+            <a class=brand href="{% url landing %}">Quoteb.in</a>
+
+            <nav class=nav-collapse>
+                {% if user.is_authenticated %}
+                    <ul class=nav>
+                        <li class="{% active 'list_quotes' %}"><a href="{% url list_quotes %}">Your quotes</a>
+                        <li class="{% active 'create_quote' %}"><a href="{% url create_quote %}">Add a quote</a>
+                    </ul>
+                {% endif %}
+
+                <ul class="nav pull-right">
+                    <li class="{% active 'about' %}"><a href="{% url about %}">About</a>
+
+                    {% if user.is_authenticated %}
+                        <li class=dropdown>
+                            <a href=#navbar-dropdown class=dropdown-toggle data-toggle=dropdown>{{ user.email }} <b class=caret></b></a>
+                            <ul class=dropdown-menu>
+                                <li><a href="{% url log_out %}">Log out</a>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="{% active 'log_in' %}"><a href="{% url log_in %}">Log in</a>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
