@@ -33,6 +33,13 @@ AUTHENTICATION_BACKENDS = (
     'django_browserid.auth.BrowserIDBackend',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
+    'django.core.context_processors.static',
+    'django_browserid.context_processors.browserid_form',
+)
+
 STATIC_URL = '/static/'
 
 STATICFILES_FINDERS = (
