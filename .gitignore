@@ -1,3 +1,4 @@
 *.pyc
 quotes.db
 settings_development.py
+settings_keys.py

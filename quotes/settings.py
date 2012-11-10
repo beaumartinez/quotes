@@ -58,6 +58,13 @@ MIDDLEWARE_CLASSES = (
 
 SITE_URL = 'http://quoteb.in/'
 
+# Keys
+
+try:
+    from settings_keys import *
+except ImportError:
+    raise ValueError('Key settings (settings_keys.py) not found')
+
 # Development settings
 
 try:
