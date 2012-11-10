@@ -46,3 +46,6 @@ def list_quotes(request):
     return render(request, 'list_quotes.html', {
         'quotes': quotes, 
     })
+
+def log_in(request):
+    return render(request, 'log_in.html')

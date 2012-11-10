@@ -7,4 +7,6 @@ urlpatterns = patterns('quotes.views',
     url('^list/$', 'list_quotes', name='list_quotes'),
 
     url('^about/$', 'about', name='about'),
+
+    url('^log-in/$', 'log_in', name='log_in'),
 )
