@@ -14,6 +14,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.staticfiles',
 
     'crispy_forms',
     'floppyforms',
@@ -23,4 +24,10 @@ INSTALLED_APPS = (
 
 TEMPLATE_DIRS = (
     'quotes/templates',
+)
+
+STATIC_URL = '/static/'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 )
