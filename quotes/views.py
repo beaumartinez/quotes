@@ -8,7 +8,10 @@ from quotes.models import Quote
 from quotes.forms import QuoteForm
 
 def landing(request):
-    return redirect(reverse('list_quotes'))
+    if request.user.is_authenticated():
+        return redirect(reverse('list_quotes'))
+
+    return redirect(reverse('about'))
 
 def about(request):
     return render(request, 'about.html')
