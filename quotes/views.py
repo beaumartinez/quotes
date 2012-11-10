@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
@@ -28,14 +29,17 @@ def _create_or_edit_quote(request, quote=None):
         'form': form, 
     })
 
+@login_required
 def create_quote(request):
     return _create_or_edit_quote(request)
 
+@login_required
 def edit_quote(request, quote_id):
     quote = get_object_or_404(Quote, pk=quote_id, user=request.user)
 
     return _create_or_edit_quote(request, quote=quote)
 
+@login_required
 def list_quotes(request):
     quotes = Quote.objects.filter(user=request.user)
 
