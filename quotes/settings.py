@@ -1,8 +1,5 @@
 from django.core.urlresolvers import reverse_lazy
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
-
 ROOT_URLCONF = 'quotes.urls'
 
 DATABASES = {
