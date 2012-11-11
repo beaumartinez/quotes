@@ -2,3 +2,4 @@ django
 django-browserid
 django-crispy-forms
 django-floppyforms
+gunicorn
