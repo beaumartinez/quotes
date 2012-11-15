@@ -14,5 +14,9 @@ urlpatterns = patterns('quotes.views',
 )
 
 urlpatterns += patterns('',
+    url(r'^api/', include('quotes.api.urls', namespace='api')),
+)
+
+urlpatterns += patterns('',
     url(r'^browserid/', include('django_browserid.urls')),
 )
