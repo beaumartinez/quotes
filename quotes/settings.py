@@ -18,6 +18,7 @@ INSTALLED_APPS = (
     'crispy_forms',
     'django_browserid',
     'floppyforms',
+    'rest_framework',
 
     'quotes',
 )
