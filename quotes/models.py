@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.db.models import BooleanField
 from django.db.models import CharField
 from django.db.models import ForeignKey
 from django.db.models import Model
@@ -10,6 +11,8 @@ class Quote(Model):
     content = TextField()
     author = ForeignKey('Author', blank=True, null=True)
     source = ForeignKey('Source', blank=True, null=True)
+
+    public = BooleanField(default=True)
 
 class Author(Model):
     name = CharField(max_length=100, unique=True)

@@ -2,6 +2,7 @@ from re import sub
 
 from django.forms import ModelForm
 from django.forms import CharField
+from django.forms import BooleanField
 
 from crispy_forms.bootstrap import FormActions
 from crispy_forms.helper import FormHelper
@@ -34,6 +35,8 @@ class QuoteForm(ModelForm):
         self.request = request
 
         super(QuoteForm, self).__init__(*args, **kwargs)
+
+        self.fields['public'].help_text = 'Make the quote public. Everyone can see public quotes'
 
         # Set author name
         
@@ -112,6 +115,7 @@ class QuoteForm(ModelForm):
         'content',
         'author',
         'source',
+        'public',
 
         FormActions(
             Submit('add', 'Add quote', css_class='btn-primary'),
