@@ -18,9 +18,11 @@ INSTALLED_APPS = (
     'crispy_forms',
     'django_browserid',
     'floppyforms',
-    'rest_framework',
 
     'quotes',
+
+    # We put rest_framework down here to be able to override its templates
+    'rest_framework',
 )
 
 TEMPLATE_LOADERS = (
