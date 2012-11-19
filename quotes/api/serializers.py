@@ -12,6 +12,12 @@ class AuthorSerializer(ModelSerializer):
 
         view_name = 'api:author'
 
+    def to_native(self, object_):
+        try:
+            return super(AuthorSerializer, self).to_native(object_)
+        except AttributeError:
+            return None
+
     url = HyperlinkedIdentityField(view_name='api:author')
 
 class SourceSerializer(ModelSerializer):
@@ -20,6 +26,12 @@ class SourceSerializer(ModelSerializer):
         model = Source
 
         view_name = 'api:source'
+
+    def to_native(self, object_):
+        try:
+            return super(SourceSerializer, self).to_native(object_)
+        except AttributeError:
+            return None
 
     url = HyperlinkedIdentityField(view_name='api:source')
 
