@@ -10,8 +10,6 @@ class AuthorSerializer(ModelSerializer):
     class Meta(object):
         model = Author
 
-        view_name = 'api:author'
-
     def to_native(self, object_):
         try:
             return super(AuthorSerializer, self).to_native(object_)
@@ -25,8 +23,6 @@ class SourceSerializer(ModelSerializer):
     class Meta(object):
         model = Source
 
-        view_name = 'api:source'
-
     def to_native(self, object_):
         try:
             return super(SourceSerializer, self).to_native(object_)
@@ -39,8 +35,6 @@ class QuoteSerializer(ModelSerializer):
 
     class Meta(object):
         model = Quote
-
-        view_name = 'api:quote'
 
         exclude = ('user',)
 
