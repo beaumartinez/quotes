@@ -7,6 +7,7 @@ from django.shortcuts import redirect
 from django.shortcuts import render
 
 from quotes.models import Quote
+from quotes.forms import DeleteQuoteForm
 from quotes.forms import QuoteForm
 
 def landing(request):
@@ -26,8 +27,11 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
-def _create_or_edit_quote(request, quote=None):
-    form = QuoteForm(request, request.POST or None, instance=quote)
+def _create_or_edit_quote(request, edit=False, quote=None):
+    if edit:
+        form = DeleteQuoteForm(request, request.POST or None, instance=quote)
+    else:
+        form = QuoteForm(request, request.POST or None, instance=quote)
 
     if form.is_valid():
         quote = form.save()
@@ -46,7 +50,7 @@ def create_quote(request):
 def edit_quote(request, quote_id):
     quote = get_object_or_404(Quote, pk=quote_id, user=request.user.pk)
 
-    return _create_or_edit_quote(request, quote=quote)
+    return _create_or_edit_quote(request, edit=True, quote=quote)
 
 @login_required
 def list_quotes(request):

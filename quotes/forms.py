@@ -6,6 +6,7 @@ from django.forms import BooleanField
 
 from crispy_forms.bootstrap import FormActions
 from crispy_forms.helper import FormHelper
+from crispy_forms.layout import HTML
 from crispy_forms.layout import Layout
 from crispy_forms.layout import Submit
 from floppyforms.widgets import TextInput
@@ -119,5 +120,28 @@ class QuoteForm(ModelForm):
 
         FormActions(
             Submit('add', 'Add quote', css_class='btn-primary'),
+        )
+    )
+
+class DeleteQuoteForm(QuoteForm):
+
+    def save(self, *args, **kwargs):
+        quote = super(DeleteQuoteForm, self).save(*args, **kwargs)
+
+        if 'delete' in self.data:
+            quote.delete()
+
+        return quote
+
+    helper = FormHelper()
+    helper.layout = Layout(
+        'content',
+        'author',
+        'source',
+        'public',
+
+        FormActions(
+            Submit('add', 'Update quote', css_class='btn-primary'),
+            Submit('delete', 'Delete quote', css_class='btn-danger'),
         )
     )
