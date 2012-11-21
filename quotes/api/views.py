@@ -7,17 +7,18 @@ from rest_framework.response import Response
 from quotes.api.serializers import AuthorSerializer
 from quotes.api.serializers import QuoteSerializer
 from quotes.api.serializers import SourceSerializer
+from quotes.models import Quote
 
 class AuthorDetail(RetrieveAPIView):
     model = AuthorSerializer.Meta.model
     serializer_class = AuthorSerializer
 
 class QuoteDetail(RetrieveAPIView):
-    model = QuoteSerializer.Meta.model
+    queryset = Quote.objects.filter(public=True)
     serializer_class = QuoteSerializer
 
 class QuoteList(ListAPIView):
-    model = QuoteSerializer.Meta.model
+    queryset = Quote.objects.filter(public=True)
     serializer_class = QuoteSerializer
 
 class SourceDetail(RetrieveAPIView):
