@@ -14,7 +14,7 @@ urlpatterns = patterns('quotes.views',
 )
 
 urlpatterns += patterns('',
-    url(r'^api/', include('quotes.api.urls', namespace='api')),
+    url(r'^api/', include('quotes.api.urls')),
 )
 
 urlpatterns += patterns('',

@@ -16,7 +16,7 @@ class AuthorSerializer(ModelSerializer):
         except AttributeError:
             return None
 
-    url = HyperlinkedIdentityField(view_name='api:author')
+    url = HyperlinkedIdentityField(view_name='api.author')
 
 class SourceSerializer(ModelSerializer):
 
@@ -29,7 +29,7 @@ class SourceSerializer(ModelSerializer):
         except AttributeError:
             return None
 
-    url = HyperlinkedIdentityField(view_name='api:source')
+    url = HyperlinkedIdentityField(view_name='api.source')
 
 class QuoteSerializer(ModelSerializer):
 
@@ -38,7 +38,7 @@ class QuoteSerializer(ModelSerializer):
 
         exclude = ('user',)
 
-    url = HyperlinkedIdentityField(view_name='api:quote')
+    url = HyperlinkedIdentityField(view_name='api.quote')
 
     author = AuthorSerializer()
     source = SourceSerializer()

@@ -27,7 +27,7 @@ class SourceDetail(RetrieveAPIView):
 @api_view(('GET',))
 def root(request, format=None):
     return Response({
-        'quotes': reverse('api:list_quotes', request=request),
+        'quotes': reverse('api.list_quotes', request=request),
     })
 
 author = AuthorDetail.as_view()
