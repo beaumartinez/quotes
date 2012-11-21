@@ -11,18 +11,22 @@ from quotes.models import Quote
 
 class AuthorDetail(RetrieveAPIView):
     model = AuthorSerializer.Meta.model
+
     serializer_class = AuthorSerializer
 
 class QuoteDetail(RetrieveAPIView):
     queryset = Quote.objects.filter(public=True)
+
     serializer_class = QuoteSerializer
 
 class QuoteList(ListAPIView):
     queryset = Quote.objects.filter(public=True)
+
     serializer_class = QuoteSerializer
 
 class SourceDetail(RetrieveAPIView):
     model = SourceSerializer.Meta.model
+
     serializer_class = SourceSerializer
 
 @api_view(('GET',))
@@ -32,6 +36,9 @@ def root(request, format=None):
     })
 
 author = AuthorDetail.as_view()
+
 list_quotes = QuoteList.as_view()
+
 quote = QuoteDetail.as_view()
+
 source = SourceDetail.as_view()
