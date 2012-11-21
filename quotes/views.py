@@ -28,10 +28,8 @@ def about(request):
     return render(request, 'about.html')
 
 def _create_or_edit_quote(request, edit=False, quote=None):
-    if edit:
-        form = DeleteQuoteForm(request, request.POST or None, instance=quote)
-    else:
-        form = QuoteForm(request, request.POST or None, instance=quote)
+    form_class = DeleteQuoteForm if edit else QuoteForm
+    form = form_class(request, request.POST or None, instance=quote)
 
     if form.is_valid():
         quote = form.save()
