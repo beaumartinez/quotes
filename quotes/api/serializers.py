@@ -36,7 +36,10 @@ class QuoteSerializer(ModelSerializer):
     class Meta(object):
         model = Quote
 
-        exclude = ('user',)
+        exclude = (
+            'public',
+            'user',
+        )
 
     url = HyperlinkedIdentityField(view_name='api.quote')
 
