@@ -2,7 +2,11 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <h1>Add a quote</h1>
+    {% if edit %}
+        <h1>Edit quote</h1>
+    {% else %}
+        <h1>Add a quote</h1>
+    {% endif %}
 
     {% crispy form %}
 {% endblock %}

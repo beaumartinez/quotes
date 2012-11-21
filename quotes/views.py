@@ -39,6 +39,7 @@ def _create_or_edit_quote(request, edit=False, quote=None):
         return redirect(reverse('landing'))
 
     return render(request, 'create_quote.html', {
+        'edit': edit,
         'form': form, 
     })
 
