@@ -1,5 +1,5 @@
-from rest_framework.serializers import ModelSerializer
 from rest_framework.serializers import HyperlinkedIdentityField
+from rest_framework.serializers import ModelSerializer
 
 from quotes.models import Author
 from quotes.models import Quote
