@@ -20,6 +20,7 @@ INSTALLED_APPS = (
     'floppyforms',
 
     'quotes',
+    'quotes.api',
 
     # We put rest_framework down here to be able to override its templates
     'rest_framework',
