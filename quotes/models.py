@@ -9,8 +9,8 @@ class Quote(Model):
     user = ForeignKey(User)
 
     content = TextField()
-    author = ForeignKey('Author', blank=True, null=True)
-    source = ForeignKey('Source', blank=True, null=True)
+    author = ForeignKey('Author', blank=True, null=True, related_name='quotes')
+    source = ForeignKey('Source', blank=True, null=True, related_name='quotes')
 
     public = BooleanField(default=True)
 

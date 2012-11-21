@@ -1,4 +1,5 @@
 from rest_framework.serializers import HyperlinkedIdentityField
+from rest_framework.serializers import ManyHyperlinkedRelatedField
 from rest_framework.serializers import ModelSerializer
 
 from quotes.models import Author
@@ -17,6 +18,7 @@ class AuthorSerializer(ModelSerializer):
             return None
 
     url = HyperlinkedIdentityField(view_name='api.author')
+    quotes = ManyHyperlinkedRelatedField(view_name='api.quote')
 
 class SourceSerializer(ModelSerializer):
 
@@ -30,6 +32,7 @@ class SourceSerializer(ModelSerializer):
             return None
 
     url = HyperlinkedIdentityField(view_name='api.source')
+    quotes = ManyHyperlinkedRelatedField(view_name='api.quote')
 
 class QuoteSerializer(ModelSerializer):
 
