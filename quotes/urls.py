@@ -17,8 +17,5 @@ urlpatterns = patterns('quotes.views',
 
 urlpatterns += patterns('',
     url(r'^api/', include('quotes.api.urls')),
-)
-
-urlpatterns += patterns('',
     url(r'^browserid/', include('django_browserid.urls')),
 )
