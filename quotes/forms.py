@@ -64,7 +64,7 @@ class QuoteForm(ModelForm):
                 self.initial['source'] = source.name
 
     def save(self, *args, **kwargs):
-        commit = kwargs.pop('commit', True)
+        commit = kwargs.get('commit', True)
 
         kwargs['commit'] = False
 
