@@ -1,4 +1,6 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include
+from django.conf.urls import patterns
+from django.conf.urls import url
 
 urlpatterns = patterns('quotes.views',
     url('^$', 'landing', name='landing'),

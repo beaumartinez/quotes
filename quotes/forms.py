@@ -2,11 +2,9 @@ from re import sub
 
 from django.forms import ModelForm
 from django.forms import CharField
-from django.forms import BooleanField
 
 from crispy_forms.bootstrap import FormActions
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML
 from crispy_forms.layout import Layout
 from crispy_forms.layout import Submit
 from floppyforms.widgets import TextInput

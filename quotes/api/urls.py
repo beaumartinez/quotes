@@ -1,4 +1,5 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns
+from django.conf.urls import url
 
 urlpatterns = patterns('quotes.api.views',
     url(r'^$', 'root', name='api.root'),
