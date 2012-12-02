@@ -7,7 +7,6 @@ from rest_framework.response import Response
 from quotes.api.serializers import AuthorSerializer
 from quotes.api.serializers import QuoteSerializer
 from quotes.api.serializers import SourceSerializer
-from quotes.models import Quote
 
 class AuthorDetail(RetrieveAPIView):
     model = AuthorSerializer.Meta.model
@@ -20,12 +19,12 @@ class AuthorList(ListAPIView):
     serializer_class = AuthorSerializer
 
 class QuoteDetail(RetrieveAPIView):
-    queryset = Quote.objects.filter(public=True)
+    model = QuoteSerializer.Meta.model
 
     serializer_class = QuoteSerializer
 
 class QuoteList(ListAPIView):
-    queryset = Quote.objects.filter(public=True)
+    model = QuoteSerializer.Meta.model
 
     serializer_class = QuoteSerializer
 

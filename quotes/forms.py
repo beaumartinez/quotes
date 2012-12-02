@@ -35,8 +35,6 @@ class QuoteForm(ModelForm):
 
         super(QuoteForm, self).__init__(*args, **kwargs)
 
-        self.fields['public'].help_text = 'Make the quote public. Everyone can see public quotes'
-
         # Set author name
         
         try:
@@ -114,7 +112,6 @@ class QuoteForm(ModelForm):
         'content',
         'author',
         'source',
-        'public',
 
         FormActions(
             Submit('add', 'Add quote', css_class='btn-primary'),
@@ -136,7 +133,6 @@ class DeleteQuoteForm(QuoteForm):
         'content',
         'author',
         'source',
-        'public',
 
         FormActions(
             Submit('add', 'Update quote', css_class='btn-primary'),
