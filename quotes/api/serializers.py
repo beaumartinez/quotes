@@ -14,15 +14,15 @@ def _filter_falsish_values(dict_):
     filtered_dict = dict()
 
     for key, value in dict_.iteritems():
-        new_value = value
-
-        # Match any sequence apart from a string
-        if isinstance(value, Sequence) and not isinstance(value, basestring):
-            new_value = imap(lambda x: _filter_falsish_values(x), value)
-        elif isinstance(value, Mapping):
-            new_value = _filter_falsish_values(value)
-
         if bool(value):
+            new_value = value
+
+            # Match any sequence apart from a string
+            if isinstance(value, Sequence) and not isinstance(value, basestring):
+                new_value = imap(lambda x: _filter_falsish_values(x), value)
+            elif isinstance(value, Mapping):
+                new_value = _filter_falsish_values(value)
+
             filtered_dict[key] = new_value
 
     return filtered_dict
