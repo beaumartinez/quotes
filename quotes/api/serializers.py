@@ -1,3 +1,4 @@
+from collections import Mapping
 from collections import Sequence
 from itertools import imap
 
@@ -10,7 +11,21 @@ from quotes.models import Quote
 from quotes.models import Source
 
 def _filter_none_values(dict_):
-    return {key: value for key, value in dict_.iteritems() if bool(value)}
+    filtered_dict = dict()
+
+    for key, value in dict_.iteritems():
+        new_value = value
+
+        # Match any sequence apart from a string
+        if isinstance(value, Sequence) and not isinstance(value, basestring):
+            new_value = imap(lambda x: _filter_none_values(x), value)
+        elif isinstance(value, Mapping):
+            new_value = _filter_none_values(value)
+
+        if bool(value):
+            filtered_dict[key] = new_value
+
+    return filtered_dict
 
 class _NoNullFieldModelSerializer(ModelSerializer):
 
