@@ -31,23 +31,26 @@ class _NoNullFieldModelSerializer(ModelSerializer):
         except AttributeError:
             return None
 
-class AuthorSerializer(_NoNullFieldModelSerializer):
+class SimpleAuthorSerializer(_NoNullFieldModelSerializer):
+
+    url = HyperlinkedIdentityField(view_name='api.author')
 
     class Meta(object):
         model = Author
 
-    url = HyperlinkedIdentityField(view_name='api.author')
-    quotes = ManyHyperlinkedRelatedField(view_name='api.quote')
+class SimpleSourceSerializer(_NoNullFieldModelSerializer):
 
-class SourceSerializer(_NoNullFieldModelSerializer):
+    url = HyperlinkedIdentityField(view_name='api.source')
 
     class Meta(object):
         model = Source
 
-    url = HyperlinkedIdentityField(view_name='api.source')
-    quotes = ManyHyperlinkedRelatedField(view_name='api.quote')
-
 class QuoteSerializer(_NoNullFieldModelSerializer):
+
+    url = HyperlinkedIdentityField(view_name='api.quote')
+
+    author = SimpleAuthorSerializer()
+    source = SimpleSourceSerializer()
 
     class Meta(object):
         model = Quote
@@ -57,7 +60,10 @@ class QuoteSerializer(_NoNullFieldModelSerializer):
             'user',
         )
 
-    url = HyperlinkedIdentityField(view_name='api.quote')
+class AuthorSerializer(SimpleAuthorSerializer):
 
-    author = AuthorSerializer()
-    source = SourceSerializer()
+    quotes = QuoteSerializer()
+
+class SourceSerializer(SimpleSourceSerializer):
+
+    quotes = QuoteSerializer()
