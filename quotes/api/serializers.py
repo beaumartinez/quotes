@@ -29,6 +29,7 @@ def _filter_falsish_values(dict_):
 
 class _NoNullFieldModelSerializer(ModelSerializer):
 
+    # Remove null fields
     @property
     def data(self):
         data = super(_NoNullFieldModelSerializer, self).data
@@ -40,6 +41,7 @@ class _NoNullFieldModelSerializer(ModelSerializer):
 
         return data
 
+    # Account for Author or Source being None and hence not having any fields
     def to_native(self, object_):
         try:
             return super(_NoNullFieldModelSerializer, self).to_native(object_)
