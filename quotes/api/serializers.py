@@ -25,16 +25,16 @@ class _NoNullFieldModelSerializer(ModelSerializer):
 
         return data
 
+    def to_native(self, object_):
+        try:
+            return super(_NoNullFieldModelSerializer, self).to_native(object_)
+        except AttributeError:
+            return None
+
 class AuthorSerializer(_NoNullFieldModelSerializer):
 
     class Meta(object):
         model = Author
-
-    def to_native(self, object_):
-        try:
-            return super(AuthorSerializer, self).to_native(object_)
-        except AttributeError:
-            return None
 
     url = HyperlinkedIdentityField(view_name='api.author')
     quotes = ManyHyperlinkedRelatedField(view_name='api.quote')
@@ -43,12 +43,6 @@ class SourceSerializer(_NoNullFieldModelSerializer):
 
     class Meta(object):
         model = Source
-
-    def to_native(self, object_):
-        try:
-            return super(SourceSerializer, self).to_native(object_)
-        except AttributeError:
-            return None
 
     url = HyperlinkedIdentityField(view_name='api.source')
     quotes = ManyHyperlinkedRelatedField(view_name='api.quote')
