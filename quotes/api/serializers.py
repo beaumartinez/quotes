@@ -10,7 +10,7 @@ from quotes.models import Quote
 from quotes.models import Source
 
 def _filter_none_values(dict_):
-    return {key: value for key, value in dict_.iteritems() if value is not None}
+    return {key: value for key, value in dict_.iteritems() if bool(value)}
 
 class _NoNullFieldModelSerializer(ModelSerializer):
 
