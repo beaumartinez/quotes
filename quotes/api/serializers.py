@@ -10,7 +10,7 @@ from quotes.models import Author
 from quotes.models import Quote
 from quotes.models import Source
 
-def _filter_none_values(dict_):
+def _filter_falsish_values(dict_):
     filtered_dict = dict()
 
     for key, value in dict_.iteritems():
@@ -18,9 +18,9 @@ def _filter_none_values(dict_):
 
         # Match any sequence apart from a string
         if isinstance(value, Sequence) and not isinstance(value, basestring):
-            new_value = imap(lambda x: _filter_none_values(x), value)
+            new_value = imap(lambda x: _filter_falsish_values(x), value)
         elif isinstance(value, Mapping):
-            new_value = _filter_none_values(value)
+            new_value = _filter_falsish_values(value)
 
         if bool(value):
             filtered_dict[key] = new_value
@@ -34,9 +34,9 @@ class _NoNullFieldModelSerializer(ModelSerializer):
         data = super(_NoNullFieldModelSerializer, self).data
 
         if isinstance(data, Sequence):
-            data = imap(lambda x: _filter_none_values(x), data)
+            data = imap(lambda x: _filter_falsish_values(x), data)
         else:
-            data = _filter_none_values(data)
+            data = _filter_falsish_values(data)
 
         return data
 
