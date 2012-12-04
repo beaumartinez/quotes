@@ -11,35 +11,16 @@ from quotes.models import Quote
 from quotes.models import Source
 
 def _filter_falsish_values(dict_):
-    filtered_dict = dict()
-
-    for key, value in dict_.iteritems():
-        if bool(value):
-            new_value = value
-
-            # Match any sequence apart from a string
-            if isinstance(value, Sequence) and not isinstance(value, basestring):
-                new_value = imap(lambda x: _filter_falsish_values(x), value)
-            elif isinstance(value, Mapping):
-                new_value = _filter_falsish_values(value)
-
-            filtered_dict[key] = new_value
-
-    return filtered_dict
+    return {key: value for key, value in dict_.iteritems() if bool(value)}
 
 class _NoNullFieldModelSerializer(ModelSerializer):
 
     # Remove null fields
-    @property
-    def data(self):
-        data = super(_NoNullFieldModelSerializer, self).data
+    def convert_object(self, object_):
+        converted = super(_NoNullFieldModelSerializer, self).convert_object(object_)
+        converted = _filter_falsish_values(converted)
 
-        if isinstance(data, Sequence):
-            data = imap(lambda x: _filter_falsish_values(x), data)
-        else:
-            data = _filter_falsish_values(data)
-
-        return data
+        return converted
 
     # Account for Author or Source being None and hence not having any fields
     def to_native(self, object_):
