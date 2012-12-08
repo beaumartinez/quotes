@@ -1,11 +1,14 @@
+from sys import path
+from os.path import abspath
+
 from django.core.urlresolvers import reverse_lazy
 
-ROOT_URLCONF = 'quotes.urls'
+ROOT_URLCONF = 'quotebin.urls'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'quotes.db',
+        'NAME': 'quotebin.db',
     },
 }
 
@@ -18,16 +21,19 @@ INSTALLED_APPS = (
     'crispy_forms',
     'django_browserid',
     'floppyforms',
+    'rest_framework',
 
     'quotes',
-    'quotes.api',
-
-    # We put rest_framework down here to be able to override its templates
-    'rest_framework',
+    'api',
 )
 
 TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
+)
+
+TEMPLATE_DIRS = (
+    'templates',
 )
 
 AUTHENTICATION_BACKENDS = (

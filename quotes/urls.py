@@ -14,8 +14,3 @@ urlpatterns = patterns('quotes.views',
     url('^log-in/$', 'log_in', name='log_in'),
     url('^log-out/$', 'log_out', name='log_out'),
 )
-
-urlpatterns += patterns('',
-    url(r'^api/', include('quotes.api.urls')),
-    url(r'^browserid/', include('django_browserid.urls')),
-)

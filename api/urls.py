@@ -1,7 +1,7 @@
 from django.conf.urls import patterns
 from django.conf.urls import url
 
-urlpatterns = patterns('quotes.api.views',
+urlpatterns = patterns('api.views',
     url(r'^$', 'root', name='api.root'),
 
     url(r'^authors/$', 'list_authors', name='api.list_authors'),

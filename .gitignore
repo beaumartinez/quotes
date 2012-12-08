@@ -1,4 +1,4 @@
 *.pyc
-quotes.db
-settings_development.py
-settings_keys.py
+quotebin.db
+quotebin/settings_development.py
+quotebin/settings_keys.py

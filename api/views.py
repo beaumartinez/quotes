@@ -4,9 +4,9 @@ from rest_framework.generics import RetrieveAPIView
 from rest_framework.reverse import reverse
 from rest_framework.response import Response
 
-from quotes.api.serializers import AuthorSerializer
-from quotes.api.serializers import QuoteSerializer
-from quotes.api.serializers import SourceSerializer
+from api.serializers import AuthorSerializer
+from api.serializers import QuoteSerializer
+from api.serializers import SourceSerializer
 
 class AuthorDetail(RetrieveAPIView):
     model = AuthorSerializer.Meta.model
