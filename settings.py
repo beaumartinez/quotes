@@ -3,7 +3,7 @@ from os.path import abspath
 
 from django.core.urlresolvers import reverse_lazy
 
-ROOT_URLCONF = 'quotebin.urls'
+ROOT_URLCONF = 'urls'
 
 DATABASES = {
     'default': {
