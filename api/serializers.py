@@ -54,7 +54,6 @@ class QuoteSerializer(_NoNullFieldModelSerializer):
         model = Quote
 
         exclude = (
-            'public',
             'user',
         )
 
